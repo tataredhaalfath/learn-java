@@ -16,11 +16,22 @@ public class App {
         // find a pair with the given sum in list
         // Number 10
 
+        List<Integer> result = new ArrayList<>();
+        int total = 10;
+
         for (int i = 0; i < numbers.size(); i++) {
+            Integer firstNumber = numbers.get(i);
             for (int j = 0; j < numbers.size(); j++) {
-                if ((numbers.get(i) + numbers.get(j)) == 10) {
-                    System.out.println(
-                            numbers.get(i) + " dan " + numbers.get(j) + " = " + (numbers.get(i) + numbers.get(j)));
+                if (i != j) {
+                    Integer secondNumber = numbers.get(j);
+                    Boolean isNumbersExist = result.contains(firstNumber);
+                    Boolean isSumEquals10 = (firstNumber + secondNumber) == total;
+                    if (isSumEquals10 && !isNumbersExist) {
+                        result.add(firstNumber);
+                        result.add(secondNumber);
+                        System.out.println(
+                                firstNumber + " dan " + secondNumber + " = " + (firstNumber + secondNumber));
+                    }
                 }
             }
         }
